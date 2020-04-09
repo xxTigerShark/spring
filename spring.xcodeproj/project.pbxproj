@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2CA5A0243FDF2300CCEBEB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */; };
 		0A5A1B5124200B4800FD4646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5024200B4800FD4646 /* AppDelegate.swift */; };
 		0A5A1B5324200B4800FD4646 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5224200B4800FD4646 /* GameScene.sks */; };
 		0A5A1B5524200B4800FD4646 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5424200B4800FD4646 /* Actions.sks */; };
@@ -17,6 +18,10 @@
 		0A5A1B6124200B4C00FD4646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5F24200B4C00FD4646 /* LaunchScreen.storyboard */; };
 		0A5A1B6C24200B4C00FD4646 /* springTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B6B24200B4C00FD4646 /* springTests.swift */; };
 		0A5A1B7724200B4C00FD4646 /* springUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B7624200B4C00FD4646 /* springUITests.swift */; };
+		0A5A1B8724200BE500FD4646 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1B8624200BE500FD4646 /* GameKit.framework */; };
+		0A5A1B8924200BED00FD4646 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1B8824200BED00FD4646 /* StoreKit.framework */; };
+		0A5A1B8B24200C0F00FD4646 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */; };
+		0A5A1B8E24200DE100FD4646 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B8D24200DE100FD4646 /* Selection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0A5A1B4D24200B4800FD4646 /* spring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5A1B5024200B4800FD4646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A5A1B5224200B4800FD4646 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -53,6 +59,11 @@
 		0A5A1B7224200B4C00FD4646 /* springUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = springUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5A1B7624200B4C00FD4646 /* springUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = springUITests.swift; sourceTree = "<group>"; };
 		0A5A1B7824200B4C00FD4646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A5A1B8424200B8100FD4646 /* spring.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = spring.entitlements; sourceTree = "<group>"; };
+		0A5A1B8624200BE500FD4646 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0A5A1B8824200BED00FD4646 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0A5A1B8D24200DE100FD4646 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5A1B8B24200C0F00FD4646 /* CloudKit.framework in Frameworks */,
+				0A5A1B8724200BE500FD4646 /* GameKit.framework in Frameworks */,
+				0A5A1B8924200BED00FD4646 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +101,7 @@
 				0A5A1B6A24200B4C00FD4646 /* springTests */,
 				0A5A1B7524200B4C00FD4646 /* springUITests */,
 				0A5A1B4E24200B4800FD4646 /* Products */,
+				0A5A1B8524200BE500FD4646 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,11 +118,14 @@
 		0A5A1B4F24200B4800FD4646 /* spring */ = {
 			isa = PBXGroup;
 			children = (
+				0A5A1B8424200B8100FD4646 /* spring.entitlements */,
 				0A5A1B5024200B4800FD4646 /* AppDelegate.swift */,
-				0A5A1B5224200B4800FD4646 /* GameScene.sks */,
+				0A5A1B5824200B4800FD4646 /* GameViewController.swift */,
+				0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */,
 				0A5A1B5424200B4800FD4646 /* Actions.sks */,
 				0A5A1B5624200B4800FD4646 /* GameScene.swift */,
-				0A5A1B5824200B4800FD4646 /* GameViewController.swift */,
+				0A5A1B5224200B4800FD4646 /* GameScene.sks */,
+				0A5A1B8D24200DE100FD4646 /* Selection.swift */,
 				0A5A1B5A24200B4800FD4646 /* Main.storyboard */,
 				0A5A1B5D24200B4C00FD4646 /* Assets.xcassets */,
 				0A5A1B5F24200B4C00FD4646 /* LaunchScreen.storyboard */,
@@ -134,6 +152,16 @@
 			path = springUITests;
 			sourceTree = "<group>";
 		};
+		0A5A1B8524200BE500FD4646 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */,
+				0A5A1B8824200BED00FD4646 /* StoreKit.framework */,
+				0A5A1B8624200BE500FD4646 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +172,7 @@
 				0A5A1B4924200B4800FD4646 /* Sources */,
 				0A5A1B4A24200B4800FD4646 /* Frameworks */,
 				0A5A1B4B24200B4800FD4646 /* Resources */,
+				0A5A1B8C24200D8100FD4646 /* Build Incrementing */,
 			);
 			buildRules = (
 			);
@@ -262,11 +291,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A5A1B8C24200D8100FD4646 /* Build Incrementing */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Incrementing";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "formatDate=$(date \"+%Y%m%d%H%M%S\")\nbuildNumber=\"${formatDate}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${buildNumber}\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0A5A1B4924200B4800FD4646 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2CA5A0243FDF2300CCEBEB /* SettingViewController.swift in Sources */,
+				0A5A1B8E24200DE100FD4646 /* Selection.swift in Sources */,
 				0A5A1B5724200B4800FD4646 /* GameScene.swift in Sources */,
 				0A5A1B5924200B4800FD4646 /* GameViewController.swift in Sources */,
 				0A5A1B5124200B4800FD4646 /* AppDelegate.swift in Sources */,
@@ -442,17 +494,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = spring/spring.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G27MG9D62Z;
 				INFOPLIST_FILE = spring/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinmakens.spring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -460,17 +515,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = spring/spring.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G27MG9D62Z;
 				INFOPLIST_FILE = spring/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinmakens.spring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

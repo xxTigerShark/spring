@@ -13,65 +13,83 @@ class GameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+	
+	var spring = 0.0
+	var damping = 0.0
+	var height = 0.0
     
     private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
-    override func sceneDidLoad() {
+    private var label : SKLabelNode!
+	private var Circle = SKShapeNode()
+	private var staticSpringNode = SKShapeNode()
+	private var dynSpringNode = SKShapeNode()
 
+    override func sceneDidLoad() {
+		spring = Double(UserDefaults.standard.float(forKey: "sl1"))
+		damping = Double(UserDefaults.standard.float(forKey: "sl2"))
+		height = Double(UserDefaults.standard.float(forKey: "sl3"))
+		
         self.lastUpdateTime = 0
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+		
+		Circle = SKShapeNode(circleOfRadius: 40)
+		Circle.position = CGPoint.init(x: 0, y: height*500)
+		print(height)
+		Circle.name = "circle"
+		Circle.fillColor = SKColor.red
+		Circle.physicsBody = SKPhysicsBody(circleOfRadius: 40)
+		Circle.physicsBody?.isDynamic = true
+		Circle.physicsBody?.restitution = 1.0
+		self.addChild(Circle)
+		
+		staticSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
+		staticSpringNode.name = "springStat"
+		staticSpringNode.fillColor = SKColor.white
+		staticSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
+		staticSpringNode.physicsBody?.isDynamic = false
+		staticSpringNode.physicsBody?.affectedByGravity = false
+		staticSpringNode.physicsBody?.restitution = 1.0
+		staticSpringNode.position = CGPoint(x: 0, y: -500)
+		self.addChild(staticSpringNode)
+		
+		dynSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
+		dynSpringNode.name = "springDyn"
+		dynSpringNode.fillColor = SKColor.blue
+		dynSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
+		dynSpringNode.position = CGPoint(x: 0, y: -300)
+		self.addChild(dynSpringNode)
+		
+		let spr = SKPhysicsJointSpring.joint(withBodyA: staticSpringNode.physicsBody!, bodyB: dynSpringNode.physicsBody!, anchorA: staticSpringNode.position, anchorB: dynSpringNode.position)
+		spr.damping = CGFloat(damping)
+		spr.frequency = CGFloat(spring)
+		
+		self.physicsWorld.add(spr)
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
+
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
+
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
+		let touchedNode = self.atPoint(pos)
+
+		if let name = touchedNode.name
+		{
+			if name == "label"
+			{
+				print("Close Pressed")
+				NotificationCenter.default.post(name: Notification.Name(rawValue: "close"), object: nil)
+
+			}
+		}
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
+
         
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
