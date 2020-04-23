@@ -9,15 +9,22 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+	var collisionOccured = false
 	
 	var spring = 0.0
 	var damping = 0.0
 	var height = 0.0
+	
+	private var initialSet = 0.0
+	private var pos = [Double]()
     
+	private var initialSetC = 0.0
+	private var posC = [Double]()
+	
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode!
 	private var Circle = SKShapeNode()
@@ -25,9 +32,14 @@ class GameScene: SKScene {
 	private var dynSpringNode = SKShapeNode()
 
     override func sceneDidLoad() {
+		
+		_ = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(complete), userInfo: nil, repeats: true)
+
 		spring = Double(UserDefaults.standard.float(forKey: "sl1"))
 		damping = Double(UserDefaults.standard.float(forKey: "sl2"))
 		height = Double(UserDefaults.standard.float(forKey: "sl3"))
+		
+		self.physicsWorld.contactDelegate = self
 		
         self.lastUpdateTime = 0
 		
@@ -38,7 +50,11 @@ class GameScene: SKScene {
 		Circle.fillColor = SKColor.red
 		Circle.physicsBody = SKPhysicsBody(circleOfRadius: 40)
 		Circle.physicsBody?.isDynamic = true
-		Circle.physicsBody?.restitution = 1.0
+		Circle.physicsBody?.restitution = 0.0
+		Circle.physicsBody?.mass = 4.0
+		Circle.physicsBody?.usesPreciseCollisionDetection = true
+		Circle.physicsBody!.contactTestBitMask = Circle.physicsBody!.collisionBitMask
+		initialSetC = Double(Circle.position.y)
 		self.addChild(Circle)
 		
 		staticSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
@@ -47,8 +63,10 @@ class GameScene: SKScene {
 		staticSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
 		staticSpringNode.physicsBody?.isDynamic = false
 		staticSpringNode.physicsBody?.affectedByGravity = false
-		staticSpringNode.physicsBody?.restitution = 1.0
+		staticSpringNode.physicsBody?.restitution = 0.0
 		staticSpringNode.position = CGPoint(x: 0, y: -500)
+		staticSpringNode.physicsBody?.usesPreciseCollisionDetection = true
+
 		self.addChild(staticSpringNode)
 		
 		dynSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
@@ -56,6 +74,12 @@ class GameScene: SKScene {
 		dynSpringNode.fillColor = SKColor.blue
 		dynSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
 		dynSpringNode.position = CGPoint(x: 0, y: -300)
+		dynSpringNode.physicsBody?.mass = 3.0
+		initialSet = Double(dynSpringNode.position.y)
+		dynSpringNode.physicsBody!.contactTestBitMask = dynSpringNode.physicsBody!.collisionBitMask
+
+		dynSpringNode.physicsBody?.usesPreciseCollisionDetection = true
+
 		self.addChild(dynSpringNode)
 		
 		let spr = SKPhysicsJointSpring.joint(withBodyA: staticSpringNode.physicsBody!, bodyB: dynSpringNode.physicsBody!, anchorA: staticSpringNode.position, anchorB: dynSpringNode.position)
@@ -122,7 +146,71 @@ class GameScene: SKScene {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+		
+		self.enumerateChildNodes(withName: "springDyn")
+		{
+			node, stop in
+			if (node is SKShapeNode)
+			{
+				let sprite = node as! SKShapeNode
+				self.pos.append(Double(sprite.position.y) - self.initialSet)
+				
+				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0)
+				{
+					self.complete()
+					print("complete")
+				}
+			}
+		}
+		
+		self.enumerateChildNodes(withName: "circle")
+		{
+			node, stop in
+			if (node is SKShapeNode)
+			{
+				let sprite = node as! SKShapeNode
+				self.posC.append(Double(sprite.position.y) - self.initialSet)
+
+				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0)
+				{
+					self.complete()
+					print("complete")
+				}
+			}
+		}
         
         self.lastUpdateTime = currentTime
     }
+	
+	@objc func complete()
+	{
+		if collisionOccured == true
+		{
+			print("Processing")
+
+			UserDefaults.standard.set(pos, forKey: "pos")
+			UserDefaults.standard.set(posC, forKey: "posC")
+
+			collisionOccured = false
+
+			NotificationCenter.default.post(name: Notification.Name(rawValue: "next1"), object: nil)
+		}
+	}
+	
+	
+	func collisionBetween(ball: SKNode, object: SKNode) {
+		if object.name == "circle" {
+			collisionOccured = true
+			print("Collision")
+		}
+		if ball.name == "circle" {
+			collisionOccured = true
+			print("Collision")
+		}
+	}
+		
+	func didBegin(_ contact: SKPhysicsContact) {
+		collisionOccured = true
+		print("Collision")
+	}
 }

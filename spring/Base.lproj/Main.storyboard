@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZWE-Gc-jOZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Setting View Controller-->
         <scene sceneID="KxS-kH-LFQ">
             <objects>
-                <viewController id="ZWE-Gc-jOZ" customClass="SettingViewController" customModule="spring" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="start" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZWE-Gc-jOZ" customClass="SettingViewController" customModule="spring" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KeT-Ce-7p2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,5 +104,51 @@
             </objects>
             <point key="canvasLocation" x="139" y="94"/>
         </scene>
+        <!--Charts View Controller-->
+        <scene sceneID="60I-0k-885">
+            <objects>
+                <viewController storyboardIdentifier="chart" id="yhh-vD-t75" customClass="ChartsViewController" customModule="spring" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ahu-i2-WXj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-ho-uBY" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="119" width="374" height="683"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-0k-myn">
+                                <rect key="frame" x="20" y="64" width="49" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close" destination="yhh-vD-t75" eventType="touchUpInside" id="Ghv-Bj-y5r"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9uJ-ho-uBY" firstAttribute="leading" secondItem="qx7-la-Ela" secondAttribute="leading" constant="20" id="ALm-GR-x7V"/>
+                            <constraint firstItem="qx7-la-Ela" firstAttribute="bottom" secondItem="9uJ-ho-uBY" secondAttribute="bottom" constant="60" id="CsH-TM-GB0"/>
+                            <constraint firstItem="qx7-la-Ela" firstAttribute="trailing" secondItem="9uJ-ho-uBY" secondAttribute="trailing" constant="20" id="QzM-od-2CO"/>
+                            <constraint firstItem="HFN-0k-myn" firstAttribute="top" secondItem="qx7-la-Ela" secondAttribute="top" constant="20" id="fma-5R-zJb"/>
+                            <constraint firstItem="HFN-0k-myn" firstAttribute="leading" secondItem="qx7-la-Ela" secondAttribute="leading" constant="20" id="lZ4-JI-LpI"/>
+                            <constraint firstItem="9uJ-ho-uBY" firstAttribute="top" secondItem="HFN-0k-myn" secondAttribute="bottom" constant="20" id="spn-SR-0u8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qx7-la-Ela"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i6m-lj-kmh">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="xmark" catalog="system" id="z2k-6j-VIC"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainChart" destination="9uJ-ho-uBY" id="ifm-JR-Jju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IxB-xq-4KO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="747.99107142857144"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

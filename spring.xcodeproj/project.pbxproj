@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0A2CA5A0243FDF2300CCEBEB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */; };
+		0A397C3324516C5A0033430C /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A397C3224516C5A0033430C /* ChartsViewController.swift */; };
+		0A397C3524516C6A0033430C /* DataProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A397C3424516C6A0033430C /* DataProcessing.swift */; };
 		0A5A1B5124200B4800FD4646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5024200B4800FD4646 /* AppDelegate.swift */; };
 		0A5A1B5324200B4800FD4646 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5224200B4800FD4646 /* GameScene.sks */; };
 		0A5A1B5524200B4800FD4646 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0A5A1B5424200B4800FD4646 /* Actions.sks */; };
@@ -22,6 +24,9 @@
 		0A5A1B8924200BED00FD4646 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1B8824200BED00FD4646 /* StoreKit.framework */; };
 		0A5A1B8B24200C0F00FD4646 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */; };
 		0A5A1B8E24200DE100FD4646 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A1B8D24200DE100FD4646 /* Selection.swift */; };
+		4C138B09C4387DB6828B4480 /* Pods_spring_springUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D553EDB064AE6426F358CC3 /* Pods_spring_springUITests.framework */; };
+		59D2D7980F3DFB59FB9895A0 /* Pods_springTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51367BD313AFA6D7534CD5F7 /* Pods_springTests.framework */; };
+		F7B6E48F3AFF6D72CF39BB0E /* Pods_spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE36C2384860049EA990BD3D /* Pods_spring.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0A397C3224516C5A0033430C /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		0A397C3424516C6A0033430C /* DataProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProcessing.swift; sourceTree = "<group>"; };
 		0A5A1B4D24200B4800FD4646 /* spring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5A1B5024200B4800FD4646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A5A1B5224200B4800FD4646 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,6 +71,15 @@
 		0A5A1B8824200BED00FD4646 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0A5A1B8D24200DE100FD4646 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		31D5C33617898B1E41102D18 /* Pods-spring-springUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spring-springUITests.debug.xcconfig"; path = "Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		51367BD313AFA6D7534CD5F7 /* Pods_springTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_springTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D553EDB064AE6426F358CC3 /* Pods_spring_springUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spring_springUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ED8780F4605AEA8C984DAEC /* Pods-springTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-springTests.debug.xcconfig"; path = "Target Support Files/Pods-springTests/Pods-springTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ACE2D476A617945DEBB37396 /* Pods-springTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-springTests.release.xcconfig"; path = "Target Support Files/Pods-springTests/Pods-springTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7B1647A83076923E45F68D0 /* Pods-spring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spring.release.xcconfig"; path = "Target Support Files/Pods-spring/Pods-spring.release.xcconfig"; sourceTree = "<group>"; };
+		CE36C2384860049EA990BD3D /* Pods_spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA6365E12263BBEE600D5AA /* Pods-spring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spring.debug.xcconfig"; path = "Target Support Files/Pods-spring/Pods-spring.debug.xcconfig"; sourceTree = "<group>"; };
+		FD97E0A02D5FD6834ED1D86E /* Pods-spring-springUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spring-springUITests.release.xcconfig"; path = "Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,7 @@
 				0A5A1B8B24200C0F00FD4646 /* CloudKit.framework in Frameworks */,
 				0A5A1B8724200BE500FD4646 /* GameKit.framework in Frameworks */,
 				0A5A1B8924200BED00FD4646 /* StoreKit.framework in Frameworks */,
+				F7B6E48F3AFF6D72CF39BB0E /* Pods_spring.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59D2D7980F3DFB59FB9895A0 /* Pods_springTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C138B09C4387DB6828B4480 /* Pods_spring_springUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +121,7 @@
 				0A5A1B7524200B4C00FD4646 /* springUITests */,
 				0A5A1B4E24200B4800FD4646 /* Products */,
 				0A5A1B8524200BE500FD4646 /* Frameworks */,
+				4ACD15E2C7B0DCEB47D35562 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,11 +140,13 @@
 			children = (
 				0A5A1B8424200B8100FD4646 /* spring.entitlements */,
 				0A5A1B5024200B4800FD4646 /* AppDelegate.swift */,
-				0A5A1B5824200B4800FD4646 /* GameViewController.swift */,
 				0A2CA59F243FDF2300CCEBEB /* SettingViewController.swift */,
+				0A5A1B5824200B4800FD4646 /* GameViewController.swift */,
 				0A5A1B5424200B4800FD4646 /* Actions.sks */,
 				0A5A1B5624200B4800FD4646 /* GameScene.swift */,
 				0A5A1B5224200B4800FD4646 /* GameScene.sks */,
+				0A397C3224516C5A0033430C /* ChartsViewController.swift */,
+				0A397C3424516C6A0033430C /* DataProcessing.swift */,
 				0A5A1B8D24200DE100FD4646 /* Selection.swift */,
 				0A5A1B5A24200B4800FD4646 /* Main.storyboard */,
 				0A5A1B5D24200B4C00FD4646 /* Assets.xcassets */,
@@ -158,8 +180,24 @@
 				0A5A1B8A24200C0F00FD4646 /* CloudKit.framework */,
 				0A5A1B8824200BED00FD4646 /* StoreKit.framework */,
 				0A5A1B8624200BE500FD4646 /* GameKit.framework */,
+				CE36C2384860049EA990BD3D /* Pods_spring.framework */,
+				6D553EDB064AE6426F358CC3 /* Pods_spring_springUITests.framework */,
+				51367BD313AFA6D7534CD5F7 /* Pods_springTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4ACD15E2C7B0DCEB47D35562 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAA6365E12263BBEE600D5AA /* Pods-spring.debug.xcconfig */,
+				B7B1647A83076923E45F68D0 /* Pods-spring.release.xcconfig */,
+				31D5C33617898B1E41102D18 /* Pods-spring-springUITests.debug.xcconfig */,
+				FD97E0A02D5FD6834ED1D86E /* Pods-spring-springUITests.release.xcconfig */,
+				8ED8780F4605AEA8C984DAEC /* Pods-springTests.debug.xcconfig */,
+				ACE2D476A617945DEBB37396 /* Pods-springTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,10 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A5A1B7B24200B4C00FD4646 /* Build configuration list for PBXNativeTarget "spring" */;
 			buildPhases = (
+				B96090E517A879EA37C66E76 /* [CP] Check Pods Manifest.lock */,
 				0A5A1B4924200B4800FD4646 /* Sources */,
 				0A5A1B4A24200B4800FD4646 /* Frameworks */,
 				0A5A1B4B24200B4800FD4646 /* Resources */,
 				0A5A1B8C24200D8100FD4646 /* Build Incrementing */,
+				8E151A2CE173CC94891CD02C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A5A1B7E24200B4C00FD4646 /* Build configuration list for PBXNativeTarget "springTests" */;
 			buildPhases = (
+				383E89341CFB78EE3299175F /* [CP] Check Pods Manifest.lock */,
 				0A5A1B6324200B4C00FD4646 /* Sources */,
 				0A5A1B6424200B4C00FD4646 /* Frameworks */,
 				0A5A1B6524200B4C00FD4646 /* Resources */,
@@ -205,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A5A1B8124200B4C00FD4646 /* Build configuration list for PBXNativeTarget "springUITests" */;
 			buildPhases = (
+				0ECD42991B13852DBA55D609 /* [CP] Check Pods Manifest.lock */,
 				0A5A1B6E24200B4C00FD4646 /* Sources */,
 				0A5A1B6F24200B4C00FD4646 /* Frameworks */,
 				0A5A1B7024200B4C00FD4646 /* Resources */,
+				FC317D487379DE9C04932591 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -310,6 +353,106 @@
 			shellPath = /bin/sh;
 			shellScript = "formatDate=$(date \"+%Y%m%d%H%M%S\")\nbuildNumber=\"${formatDate}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${buildNumber}\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
+		0ECD42991B13852DBA55D609 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-spring-springUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		383E89341CFB78EE3299175F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-springTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E151A2CE173CC94891CD02C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spring/Pods-spring-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spring/Pods-spring-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spring/Pods-spring-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B96090E517A879EA37C66E76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-spring-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC317D487379DE9C04932591 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -320,6 +463,8 @@
 				0A2CA5A0243FDF2300CCEBEB /* SettingViewController.swift in Sources */,
 				0A5A1B8E24200DE100FD4646 /* Selection.swift in Sources */,
 				0A5A1B5724200B4800FD4646 /* GameScene.swift in Sources */,
+				0A397C3324516C5A0033430C /* ChartsViewController.swift in Sources */,
+				0A397C3524516C6A0033430C /* DataProcessing.swift in Sources */,
 				0A5A1B5924200B4800FD4646 /* GameViewController.swift in Sources */,
 				0A5A1B5124200B4800FD4646 /* AppDelegate.swift in Sources */,
 			);
@@ -492,6 +637,7 @@
 		};
 		0A5A1B7C24200B4C00FD4646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAA6365E12263BBEE600D5AA /* Pods-spring.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = spring/spring.entitlements;
@@ -513,6 +659,7 @@
 		};
 		0A5A1B7D24200B4C00FD4646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7B1647A83076923E45F68D0 /* Pods-spring.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = spring/spring.entitlements;
@@ -534,6 +681,7 @@
 		};
 		0A5A1B7F24200B4C00FD4646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8ED8780F4605AEA8C984DAEC /* Pods-springTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -556,6 +704,7 @@
 		};
 		0A5A1B8024200B4C00FD4646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACE2D476A617945DEBB37396 /* Pods-springTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -578,6 +727,7 @@
 		};
 		0A5A1B8224200B4C00FD4646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31D5C33617898B1E41102D18 /* Pods-spring-springUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -598,6 +748,7 @@
 		};
 		0A5A1B8324200B4C00FD4646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD97E0A02D5FD6834ED1D86E /* Pods-spring-springUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

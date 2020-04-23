@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		NotificationCenter.default.addObserver(self, selector: #selector(close), name: Notification.Name(rawValue: "close"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(moveOn), name: Notification.Name(rawValue: "next1"), object: nil)
 
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
@@ -65,5 +66,14 @@ class GameViewController: UIViewController {
 	@objc func close()
 	{
 		self.dismiss(animated: true, completion: nil)
+	}
+	
+	@objc func moveOn()
+	{
+		print("pushing")
+		
+			let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+			let vc = storyBoard.instantiateViewController(withIdentifier: "chart") as! ChartsViewController
+			self.present(vc, animated: true, completion: nil)
 	}
 }
