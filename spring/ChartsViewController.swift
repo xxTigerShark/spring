@@ -29,7 +29,7 @@ class ChartsViewController: UIViewController {
 	@IBAction func close()
 	{
 		self.dismiss(animated: true, completion: {
-			NotificationCenter.default.post(name: Notification.Name(rawValue: "close"), object: nil)
+			//NotificationCenter.default.post(name: Notification.Name(rawValue: "close"), object: nil)
 		})
 	}
 

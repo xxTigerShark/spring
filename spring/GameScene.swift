@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+    let cam = SKCameraNode()
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
 	var collisionOccured = false
@@ -32,8 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	private var dynSpringNode = SKShapeNode()
 
     override func sceneDidLoad() {
-		
-		_ = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(complete), userInfo: nil, repeats: true)
+		self.camera = cam
+		//_ = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(complete), userInfo: nil, repeats: true)
 
 		spring = Double(UserDefaults.standard.float(forKey: "sl1"))
 		damping = Double(UserDefaults.standard.float(forKey: "sl2"))
@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		Circle.fillColor = SKColor.red
 		Circle.physicsBody = SKPhysicsBody(circleOfRadius: 40)
 		Circle.physicsBody?.isDynamic = true
-		Circle.physicsBody?.restitution = 0.0
+		Circle.physicsBody?.restitution = 1.0
 		Circle.physicsBody?.mass = 4.0
 		Circle.physicsBody?.usesPreciseCollisionDetection = true
 		Circle.physicsBody!.contactTestBitMask = Circle.physicsBody!.collisionBitMask
@@ -63,18 +63,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		staticSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 500, height: 100))
 		staticSpringNode.physicsBody?.isDynamic = false
 		staticSpringNode.physicsBody?.affectedByGravity = false
-		staticSpringNode.physicsBody?.restitution = 0.0
-		staticSpringNode.position = CGPoint(x: 0, y: -500)
+		staticSpringNode.physicsBody?.restitution = 1.0
+		staticSpringNode.position = CGPoint(x: 0, y: -700)
 		staticSpringNode.physicsBody?.usesPreciseCollisionDetection = true
 
 		self.addChild(staticSpringNode)
 		
 		dynSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
 		dynSpringNode.name = "springDyn"
-		dynSpringNode.fillColor = SKColor.blue
+		dynSpringNode.fillColor = SKColor.white
 		dynSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
 		dynSpringNode.position = CGPoint(x: 0, y: -300)
 		dynSpringNode.physicsBody?.mass = 2.0
+		dynSpringNode.physicsBody?.restitution = 1.0
+
 		initialSet = Double(dynSpringNode.position.y)
 		dynSpringNode.physicsBody!.contactTestBitMask = dynSpringNode.physicsBody!.collisionBitMask
 
@@ -106,8 +108,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			if name == "label"
 			{
 				print("Close Pressed")
-				NotificationCenter.default.post(name: Notification.Name(rawValue: "close"), object: nil)
-
+				//NotificationCenter.default.post(name: Notification.Name(rawValue: "close"), object: nil)
+				var sceneToLoad:SKScene?
+				sceneToLoad = Menu(fileNamed: "Menu")
+				
+				if let scene = sceneToLoad {
+					
+					scene.size = size
+					scene.scaleMode = scaleMode
+					let transition = SKTransition.crossFade(withDuration: 0.25)
+					self.view?.presentScene(scene, transition: transition)
+				}
 			}
 		}
     }
@@ -170,12 +181,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			{
 				let sprite = node as! SKShapeNode
 				self.posC.append(Double(sprite.position.y) - self.initialSet)
-
+				self.cam.position = sprite.position
 				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0)
 				{
 					self.complete()
 					print("complete")
 				}
+			}
+		}
+		
+		self.enumerateChildNodes(withName: "label")
+		{
+			node, stop in
+			if (node is SKLabelNode)
+			{
+				let sprite = node as! SKLabelNode
+				sprite.position.x = self.cam.position.x - 170
+				sprite.position.y = self.cam.position.y + 500
 			}
 		}
         
@@ -212,5 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	func didBegin(_ contact: SKPhysicsContact) {
 		collisionOccured = true
 		print("Collision")
+		UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "coins") + 10, forKey: "coins")
+
 	}
 }
