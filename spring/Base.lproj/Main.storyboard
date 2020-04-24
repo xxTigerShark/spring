@@ -113,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-ho-uBY" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="119" width="374" height="683"/>
+                                <rect key="frame" x="20" y="119" width="374" height="331.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-0k-myn">
@@ -124,14 +124,22 @@
                                     <action selector="close" destination="yhh-vD-t75" eventType="touchUpInside" id="Ghv-Bj-y5r"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rim-zE-3zX" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="470.5" width="374" height="331.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qx7-la-Ela" firstAttribute="bottom" secondItem="Rim-zE-3zX" secondAttribute="bottom" constant="60" id="4aM-Y7-UXz"/>
+                            <constraint firstItem="qx7-la-Ela" firstAttribute="trailing" secondItem="Rim-zE-3zX" secondAttribute="trailing" constant="20" id="7La-Mm-1L6"/>
                             <constraint firstItem="9uJ-ho-uBY" firstAttribute="leading" secondItem="qx7-la-Ela" secondAttribute="leading" constant="20" id="ALm-GR-x7V"/>
-                            <constraint firstItem="qx7-la-Ela" firstAttribute="bottom" secondItem="9uJ-ho-uBY" secondAttribute="bottom" constant="60" id="CsH-TM-GB0"/>
+                            <constraint firstItem="Rim-zE-3zX" firstAttribute="top" secondItem="9uJ-ho-uBY" secondAttribute="bottom" constant="20" id="DuM-nB-Hwk"/>
                             <constraint firstItem="qx7-la-Ela" firstAttribute="trailing" secondItem="9uJ-ho-uBY" secondAttribute="trailing" constant="20" id="QzM-od-2CO"/>
                             <constraint firstItem="HFN-0k-myn" firstAttribute="top" secondItem="qx7-la-Ela" secondAttribute="top" constant="20" id="fma-5R-zJb"/>
                             <constraint firstItem="HFN-0k-myn" firstAttribute="leading" secondItem="qx7-la-Ela" secondAttribute="leading" constant="20" id="lZ4-JI-LpI"/>
+                            <constraint firstItem="Rim-zE-3zX" firstAttribute="height" secondItem="9uJ-ho-uBY" secondAttribute="height" id="nb5-ac-lAJ"/>
+                            <constraint firstItem="Rim-zE-3zX" firstAttribute="leading" secondItem="qx7-la-Ela" secondAttribute="leading" constant="20" id="skR-zA-48h"/>
                             <constraint firstItem="9uJ-ho-uBY" firstAttribute="top" secondItem="HFN-0k-myn" secondAttribute="bottom" constant="20" id="spn-SR-0u8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qx7-la-Ela"/>
@@ -140,6 +148,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="xmark" catalog="system" id="z2k-6j-VIC"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="compChart" destination="Rim-zE-3zX" id="KXe-9n-YQh"/>
                         <outlet property="mainChart" destination="9uJ-ho-uBY" id="ifm-JR-Jju"/>
                     </connections>
                 </viewController>

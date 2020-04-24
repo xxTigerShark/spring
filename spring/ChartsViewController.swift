@@ -11,6 +11,8 @@ import Charts
 
 class ChartsViewController: UIViewController {
 	@IBOutlet var mainChart: LineChartView?
+	@IBOutlet var compChart: LineChartView?
+
 	private var posC = [Double]()
 	private var pos = [Double]()
 
@@ -20,6 +22,7 @@ class ChartsViewController: UIViewController {
 		print(pos)
         super.viewDidLoad()
 		setUp()
+		getData()
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +33,35 @@ class ChartsViewController: UIViewController {
 		})
 	}
 
+	func getData()
+	{
+		let data = DataProcessing()
+		let spring = Double(UserDefaults.standard.float(forKey: "sl1"))
+		let damping = Double(UserDefaults.standard.float(forKey: "sl2"))
+		let height = Double(UserDefaults.standard.float(forKey: "sl3"))
+		let vals = data.beginProcess(m: 6.0, c: damping*10, k: spring*10, xStart: height, time: Double(pos.count/60), count: pos.count*40)
+		print(vals)
+		
+		compChart?.backgroundColor = UIColor.clear
+		
+		
+		// Sets data for bar chart and colors.
+		var entries = [ChartDataEntry]()
+		for val in 0...(vals.count-1)
+		{
+			if val % 40 == 0
+			{
+				entries.append(ChartDataEntry(x: Double(val), y: vals[val]))
+			}
+		}
+		
+		let chartDataSet = LineChartDataSet(entries: entries, label: nil)
+		chartDataSet.circleRadius = 0
+		chartDataSet.circleHoleRadius = 0
+		chartDataSet.drawValuesEnabled = false
+		let chartData = LineChartData(dataSets: [chartDataSet])
+		compChart!.data = chartData
+	}
 	
 	func setUp()
 	{
@@ -50,6 +82,7 @@ class ChartsViewController: UIViewController {
 		let chartData = LineChartData(dataSets: [chartDataSet])
 		mainChart!.data = chartData
 	}
+	
     /*
     // MARK: - Navigation
 

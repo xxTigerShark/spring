@@ -57,10 +57,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		initialSetC = Double(Circle.position.y)
 		self.addChild(Circle)
 		
-		staticSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
+		staticSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 500, height: 100))
 		staticSpringNode.name = "springStat"
 		staticSpringNode.fillColor = SKColor.white
-		staticSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
+		staticSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 500, height: 100))
 		staticSpringNode.physicsBody?.isDynamic = false
 		staticSpringNode.physicsBody?.affectedByGravity = false
 		staticSpringNode.physicsBody?.restitution = 0.0
@@ -74,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		dynSpringNode.fillColor = SKColor.blue
 		dynSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
 		dynSpringNode.position = CGPoint(x: 0, y: -300)
-		dynSpringNode.physicsBody?.mass = 3.0
+		dynSpringNode.physicsBody?.mass = 2.0
 		initialSet = Double(dynSpringNode.position.y)
 		dynSpringNode.physicsBody!.contactTestBitMask = dynSpringNode.physicsBody!.collisionBitMask
 

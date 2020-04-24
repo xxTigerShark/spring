@@ -2,17 +2,21 @@ PODS:
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
+  - LASwift (0.2.2)
 
 DEPENDENCIES:
   - Charts
+  - LASwift
 
 SPEC REPOS:
   trunk:
     - Charts
+    - LASwift
 
 SPEC CHECKSUMS:
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
+  LASwift: ff1d512c72ab80d01d5f3ce7f4195f1d834eb1ba
 
-PODFILE CHECKSUM: 5e86765d9f1e9af84db18d207cc558715f97c3a1
+PODFILE CHECKSUM: 32f96fd6e7f8271d58c2f5bdcacdd41146a6860a
 
 COCOAPODS: 1.9.1

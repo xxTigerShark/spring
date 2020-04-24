@@ -7,6 +7,7 @@ target 'spring' do
 
   # Pods for spring
 	pod 'Charts'
+	pod 'LASwift'
   target 'springTests' do
     inherit! :search_paths
     # Pods for testing
