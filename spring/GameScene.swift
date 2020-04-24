@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
 	var collisionOccured = false
+	var collisionCleared = false
 	
 	var spring = 0.0
 	var damping = 0.0
@@ -30,15 +31,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	private var Circle = SKShapeNode()
 	private var staticSpringNode = SKShapeNode()
 	private var dynSpringNode = SKShapeNode()
+	private var lines = [SKShapeNode]()
 
     override func sceneDidLoad() {
 		self.camera = cam
-		//_ = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(complete), userInfo: nil, repeats: true)
-
 		spring = Double(UserDefaults.standard.float(forKey: "sl1"))
 		damping = Double(UserDefaults.standard.float(forKey: "sl2"))
 		height = Double(UserDefaults.standard.float(forKey: "sl3"))
-		
+		_ = Timer.scheduledTimer(timeInterval: height/10 + 4.0, target: self, selector: #selector(good), userInfo: nil, repeats: true)
+
 		self.physicsWorld.contactDelegate = self
 		
         self.lastUpdateTime = 0
@@ -84,10 +85,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		self.addChild(dynSpringNode)
 		
-		let spr = SKPhysicsJointSpring.joint(withBodyA: staticSpringNode.physicsBody!, bodyB: dynSpringNode.physicsBody!, anchorA: staticSpringNode.position, anchorB: dynSpringNode.position)
-		spr.damping = CGFloat(damping)
-		spr.frequency = CGFloat(spring)
+		var good = false
+		var currentY = -100
+		var i = 0
+		while good == false
+		{
+			lines.append(SKShapeNode(rect: CGRect(x: -150, y: -50, width: 3, height: Int.random(in: 50...150))))
+			lines[i].name = "line"
+			lines[i].fillColor = SKColor.white
+			lines[i].physicsBody?.isDynamic = false
+			lines[i].physicsBody?.affectedByGravity = false
+			
+			lines[i].position = CGPoint(x: Int.random(in: -400...400), y: currentY)
+			lines[i].physicsBody?.usesPreciseCollisionDetection = true
+			lines[i].zPosition = -500
+			self.addChild(lines[i])
+			
+			currentY += Int.random(in: 250...400)
+			
+			if currentY > Int(Circle.position.y - 400)
+			{
+				good = true
+			}
+			i += 1
+		}
 		
+		let spr = SKPhysicsJointSpring.joint(withBodyA: staticSpringNode.physicsBody!, bodyB: dynSpringNode.physicsBody!, anchorA: staticSpringNode.position, anchorB: dynSpringNode.position)
+		spr.damping = CGFloat(damping)*0.95
+		spr.frequency = CGFloat(spring)
 		self.physicsWorld.add(spr)
     }
     
@@ -164,9 +189,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			if (node is SKShapeNode)
 			{
 				let sprite = node as! SKShapeNode
-				self.pos.append(Double(sprite.position.y) - self.initialSet)
+				if self.collisionOccured == true
+				{
+					self.pos.append(Double(sprite.position.y) - self.initialSet)
+				}
 				
-				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0)
+				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0) && self.collisionCleared == true
 				{
 					self.complete()
 					print("complete")
@@ -180,9 +208,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			if (node is SKShapeNode)
 			{
 				let sprite = node as! SKShapeNode
-				self.posC.append(Double(sprite.position.y) - self.initialSet)
+				if self.collisionOccured == true
+				{
+					self.posC.append(Double(sprite.position.y) - self.initialSet)
+				}
+
 				self.cam.position = sprite.position
-				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0)
+				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0) && self.collisionCleared == true
 				{
 					self.complete()
 					print("complete")
@@ -216,6 +248,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			collisionOccured = false
 
 			NotificationCenter.default.post(name: Notification.Name(rawValue: "next1"), object: nil)
+			
+			var sceneToLoad:SKScene?
+			sceneToLoad = GameOver(fileNamed: "GameOver")
+			
+			if let scene = sceneToLoad {
+				
+				scene.size = size
+				scene.scaleMode = scaleMode
+				let transition = SKTransition.crossFade(withDuration: 0.25)
+				self.view?.presentScene(scene, transition: transition)
+			}
 		}
 	}
 	
@@ -235,6 +278,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		collisionOccured = true
 		print("Collision")
 		UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "coins") + 10, forKey: "coins")
-
+	}
+	
+	@objc func good()
+	{
+		collisionCleared = true
+		print("Cleared")
 	}
 }

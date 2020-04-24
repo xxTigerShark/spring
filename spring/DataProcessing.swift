@@ -55,8 +55,22 @@ public class DataProcessing
 			y[i+1] = y[i] + dt*x[i+1];
 		}
 		
+		var b = Vector()
+		var belowZ = false
+		for i in x
+		{
+			if i <= 0
+			{
+				belowZ = true
+			}
+			
+			if belowZ == true
+			{
+				b.append(i)
+			}
+		}
 		
-		return x
+		return b
 	}
 	
 //	func f(y: Vector, t: Double) -> Matrix
