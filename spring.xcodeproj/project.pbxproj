@@ -28,6 +28,9 @@
 		0AC9E57024527B5C007883FE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC9E56F24527B5C007883FE /* Menu.swift */; };
 		0ACD7BC624538904008FDA7F /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0ACD7BC524538904008FDA7F /* GameOver.sks */; };
 		0ACD7BC82453890B008FDA7F /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD7BC72453890B008FDA7F /* GameOver.swift */; };
+		0AE023942454169900C48848 /* Magic.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0AE023922454169900C48848 /* Magic.sks */; };
+		0AE023952454169900C48848 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AE023932454169900C48848 /* Assets.xcassets */; };
+		0AE02397245416D300C48848 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0AE02396245416D300C48848 /* Spark.sks */; };
 		4C138B09C4387DB6828B4480 /* Pods_spring_springUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D553EDB064AE6426F358CC3 /* Pods_spring_springUITests.framework */; };
 		59D2D7980F3DFB59FB9895A0 /* Pods_springTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51367BD313AFA6D7534CD5F7 /* Pods_springTests.framework */; };
 		F7B6E48F3AFF6D72CF39BB0E /* Pods_spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE36C2384860049EA990BD3D /* Pods_spring.framework */; };
@@ -79,6 +82,9 @@
 		0AC9E56F24527B5C007883FE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		0ACD7BC524538904008FDA7F /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		0ACD7BC72453890B008FDA7F /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		0AE023922454169900C48848 /* Magic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Magic.sks; sourceTree = "<group>"; };
+		0AE023932454169900C48848 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0AE02396245416D300C48848 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		31D5C33617898B1E41102D18 /* Pods-spring-springUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spring-springUITests.debug.xcconfig"; path = "Target Support Files/Pods-spring-springUITests/Pods-spring-springUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51367BD313AFA6D7534CD5F7 /* Pods_springTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_springTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D553EDB064AE6426F358CC3 /* Pods_spring_springUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spring_springUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +130,7 @@
 		0A5A1B4424200B4800FD4646 = {
 			isa = PBXGroup;
 			children = (
+				0AE023932454169900C48848 /* Assets.xcassets */,
 				0A5A1B4F24200B4800FD4646 /* spring */,
 				0A5A1B6A24200B4C00FD4646 /* springTests */,
 				0A5A1B7524200B4C00FD4646 /* springUITests */,
@@ -161,6 +168,8 @@
 				0A397C3424516C6A0033430C /* DataProcessing.swift */,
 				0A5A1B8D24200DE100FD4646 /* Selection.swift */,
 				0A5A1B5A24200B4800FD4646 /* Main.storyboard */,
+				0AE023922454169900C48848 /* Magic.sks */,
+				0AE02396245416D300C48848 /* Spark.sks */,
 				0A5A1B5D24200B4C00FD4646 /* Assets.xcassets */,
 				0A5A1B5F24200B4C00FD4646 /* LaunchScreen.storyboard */,
 				0A5A1B6224200B4C00FD4646 /* Info.plist */,
@@ -323,11 +332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AC9E56E24527B2F007883FE /* Menu.sks in Resources */,
+				0AE02397245416D300C48848 /* Spark.sks in Resources */,
+				0AE023942454169900C48848 /* Magic.sks in Resources */,
 				0ACD7BC624538904008FDA7F /* GameOver.sks in Resources */,
 				0A5A1B5C24200B4800FD4646 /* Main.storyboard in Resources */,
 				0A5A1B5324200B4800FD4646 /* GameScene.sks in Resources */,
 				0A5A1B5E24200B4C00FD4646 /* Assets.xcassets in Resources */,
 				0A5A1B6124200B4C00FD4646 /* LaunchScreen.storyboard in Resources */,
+				0AE023952454169900C48848 /* Assets.xcassets in Resources */,
 				0A5A1B5524200B4800FD4646 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,9 +679,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinmakens.spring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -689,9 +701,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinmakens.spring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

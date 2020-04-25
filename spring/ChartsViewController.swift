@@ -63,7 +63,8 @@ class ChartsViewController: UIViewController {
 		let chartData = LineChartData(dataSets: [chartDataSet])
 		compChart!.data = chartData
 		compChart!.xAxis.drawLabelsEnabled = false
-
+		compChart!.leftAxis.drawLabelsEnabled = false
+		compChart!.rightAxis.drawLabelsEnabled = false
 	}
 	
 	func setUp()
@@ -85,6 +86,9 @@ class ChartsViewController: UIViewController {
 		let chartData = LineChartData(dataSets: [chartDataSet])
 		mainChart!.data = chartData
 		mainChart!.xAxis.drawLabelsEnabled = false
+		mainChart!.leftAxis.drawLabelsEnabled = false
+		mainChart!.rightAxis.drawLabelsEnabled = false
+		
 	}
 	
     /*

@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+// This class has been retired.
+
+
 class SettingViewController: UIViewController {
 	@IBOutlet var slider1 : UISlider!
 	@IBOutlet var slider2 : UISlider!

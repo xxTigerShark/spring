@@ -91,7 +91,7 @@ class GameOver: SKScene
 			if (node is SKLabelNode)
 			{
 				let sprite = node as! SKLabelNode
-				sprite.text = String(format: "Coins: %d", UserDefaults.standard.integer(forKey: "coins"))
+				sprite.text = String(format: "%d coins in the bank", UserDefaults.standard.integer(forKey: "coins"))
 			}
 		}
 		
