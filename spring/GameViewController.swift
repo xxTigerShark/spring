@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		// Establishes NotificationCenter posts
 		NotificationCenter.default.addObserver(self, selector: #selector(close), name: Notification.Name(rawValue: "close"), object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(moveOn), name: Notification.Name(rawValue: "next1"), object: nil)
 
@@ -47,27 +49,33 @@ class GameViewController: UIViewController {
         }
     }
 
+	// Disables auto rotate
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
+	// Sets rotation requirments
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+			return .portrait
         } else {
-            return .all
+			return .portraitUpsideDown
         }
     }
 
+	// Hides status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
 	
+	// Calls a closing of the window
 	@objc func close()
 	{
 		self.dismiss(animated: true, completion: nil)
 	}
 	
+	
+	// Pushes to view for charts
 	@objc func moveOn()
 	{
 		print("pushing")

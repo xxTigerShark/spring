@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  spring
 //
-//  Created by Kevin on 4/9/20.
+//  Created by Kevin on 3/16/20.
 //  Copyright © 2020 Kevin Makens. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 
 
 // This class has been retired.
+// Allowed for quick changing of values and was used for initial testing of simulation
 
 
 class SettingViewController: UIViewController {

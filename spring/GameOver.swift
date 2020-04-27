@@ -16,13 +16,17 @@ class GameOver: SKScene
 	private var lastUpdateTime : TimeInterval = 0
 	private var coinCount : Int = 0
 	
+	// Loads GameOver
+	// Update coin count for view from NSUserDefaults
 	override func sceneDidLoad() {
 		coinCount = UserDefaults.standard.integer(forKey: "coins")
 	}
 	
+	// Establishes touch up protocol
 	func touchUp(atPoint pos : CGPoint) {
 		let touchedNode = self.atPoint(pos)
 		
+		// Sends user back to menu
 		if let name = touchedNode.name
 		{
 			if name == "Menu"
@@ -51,8 +55,6 @@ class GameOver: SKScene
 	}
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		
 		for t in touches { self.touchDown(atPoint: t.location(in: self)) }
 	}
 	
@@ -85,6 +87,7 @@ class GameOver: SKScene
 			entity.update(deltaTime: dt)
 		}
 		
+		// Updates coin count every frame.
 		self.enumerateChildNodes(withName: "coin")
 		{
 			node, stop in

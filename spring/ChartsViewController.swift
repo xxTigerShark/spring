@@ -16,17 +16,21 @@ class ChartsViewController: UIViewController {
 	private var posC = [Double]()
 	private var pos = [Double]()
 	private var multi = 5
-	
+
+	// MARK: View Did Load
     override func viewDidLoad() {
+		// Retrieves data from NSUserDefaults for position arrays
 		pos = UserDefaults.standard.array(forKey: "pos") as! [Double]
 		posC = UserDefaults.standard.array(forKey: "posC") as! [Double]
 		print(pos)
         super.viewDidLoad()
+		
+		// Calls set up methods for theory and actual
 		setUp()
 		getData()
-        // Do any additional setup after loading the view.
     }
     
+	// Closes view
 	@IBAction func close()
 	{
 		self.dismiss(animated: true, completion: {
@@ -34,6 +38,7 @@ class ChartsViewController: UIViewController {
 		})
 	}
 
+	// Retrieves data and processes to display on a line chart before displaying on line chart
 	func getData()
 	{
 		let data = DataProcessing()
@@ -67,6 +72,10 @@ class ChartsViewController: UIViewController {
 		compChart!.rightAxis.drawLabelsEnabled = false
 	}
 	
+	// Creates calculation based on Euler Cromer
+	// data and processes to display on a line chart
+	// before displaying on line chart.
+	// Euler Cromer method is found in DataProcessing.
 	func setUp()
 	{
 		mainChart?.backgroundColor = UIColor.clear
@@ -90,15 +99,4 @@ class ChartsViewController: UIViewController {
 		mainChart!.rightAxis.drawLabelsEnabled = false
 		
 	}
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

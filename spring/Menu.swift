@@ -24,7 +24,9 @@ class Menu: SKScene
 	private var heig : Double = 0
 	private var heigCost : Int = -100
 	
+	// Loads Scene
 	override func sceneDidLoad() {
+		// First launch settings
 		if !UserDefaults.standard.bool(forKey: "first")
 		{
 			UserDefaults.standard.set(2, forKey: "sl1")
@@ -33,13 +35,16 @@ class Menu: SKScene
 			UserDefaults.standard.set(0, forKey: "coins")
 			UserDefaults.standard.set(true, forKey: "first")
 		}
-		
+
+		// Sets values from NSUserDefaults
 		spri = Double(UserDefaults.standard.float(forKey: "sl1"))
 		damp = Double(UserDefaults.standard.float(forKey: "sl2"))
 		heig = Double(UserDefaults.standard.float(forKey: "sl3"))
 		coinCount = UserDefaults.standard.integer(forKey: "coins")
 	}
 	
+	// Button touch up
+	// Controls play and allows use of currency
 	func touchUp(atPoint pos : CGPoint) {
 		let touchedNode = self.atPoint(pos)
 		
@@ -59,6 +64,8 @@ class Menu: SKScene
 					self.view?.presentScene(scene, transition: transition)
 				}
 			}
+			
+			// Next 3 handle purchasing
 			if name == "buy1"
 			{
 				if UserDefaults.standard.integer(forKey: "coins") >= 100
@@ -98,9 +105,8 @@ class Menu: SKScene
 		
 	}
 	
+	// Handles touches
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		
 		for t in touches { self.touchDown(atPoint: t.location(in: self)) }
 	}
 	
@@ -117,6 +123,7 @@ class Menu: SKScene
 	}
 	
 	
+	// Updates frame
 	override func update(_ currentTime: TimeInterval) {
 		// Called before each frame is rendered
 		
@@ -133,6 +140,7 @@ class Menu: SKScene
 			entity.update(deltaTime: dt)
 		}
 		
+		// Updates the purchase frames
 		self.enumerateChildNodes(withName: "buy1")
 		{
 			node, stop in

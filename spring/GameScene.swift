@@ -33,18 +33,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	private var dynSpringNode = SKShapeNode()
 	private var lines = [SKShapeNode]()
 	
+	// Loads GameScene
 	override func sceneDidLoad() {
+		// Sets camera
 		self.camera = cam
+		
+		// Sets physcs
 		self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.81)
+		
+		// Sets values
 		spring = Double(UserDefaults.standard.float(forKey: "sl1"))
 		damping = Double(UserDefaults.standard.float(forKey: "sl2"))
 		height = Double(UserDefaults.standard.float(forKey: "sl3"))
+		
+		// Sets emergency close timer from a unending system
 		_ = Timer.scheduledTimer(timeInterval: height/10 + 4.0, target: self, selector: #selector(good), userInfo: nil, repeats: true)
 		
 		self.physicsWorld.contactDelegate = self
 		
 		self.lastUpdateTime = 0
 		
+		// Sets up circle
 		Circle = SKShapeNode(circleOfRadius: 40)
 		Circle.position = CGPoint.init(x: 0, y: height*500)
 		print(height)
@@ -60,9 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		Circle.physicsBody!.contactTestBitMask = Circle.physicsBody!.collisionBitMask
 		initialSetC = Double(Circle.position.y)
 		Circle.run(SKAction.repeatForever(SKAction.rotate(byAngle: 3.14, duration: 0.5)))
-
 		self.addChild(Circle)
 		
+		// Sets up lower spring
 		staticSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 500, height: 100))
 		staticSpringNode.name = "springStat"
 		staticSpringNode.fillColor = SKColor.white
@@ -72,24 +81,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		staticSpringNode.physicsBody?.restitution = 1.0
 		staticSpringNode.position = CGPoint(x: 0, y: -700)
 		staticSpringNode.physicsBody?.usesPreciseCollisionDetection = true
-		
 		self.addChild(staticSpringNode)
 		
-		dynSpringNode = SKShapeNode(rect: CGRect(x: -150, y: -50, width: 300, height: 100))
+		// Sets up dynamic spring
+		dynSpringNode = SKShapeNode(rect: CGRect(x: 0, y: -300, width: 300, height: 100))
 		dynSpringNode.name = "springDyn"
 		dynSpringNode.fillColor = SKColor.white
 		dynSpringNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 300, height: 100))
 		dynSpringNode.position = CGPoint(x: 0, y: -300)
 		dynSpringNode.physicsBody?.mass = 2.0
 		dynSpringNode.physicsBody?.restitution = 1.0
-		
 		initialSet = Double(dynSpringNode.position.y)
 		dynSpringNode.physicsBody!.contactTestBitMask = dynSpringNode.physicsBody!.collisionBitMask
-		
 		dynSpringNode.physicsBody?.usesPreciseCollisionDetection = true
-		
 		self.addChild(dynSpringNode)
 		
+		// Sets up space lines
 		var good = false
 		var currentY = -100
 		var i = 0
@@ -115,13 +122,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			i += 1
 		}
 		
+		// Establishes spring physics
 		let spr = SKPhysicsJointSpring.joint(withBodyA: staticSpringNode.physicsBody!, bodyB: dynSpringNode.physicsBody!, anchorA: staticSpringNode.position, anchorB: dynSpringNode.position)
 		spr.damping = CGFloat(damping)*0.95
 		spr.frequency = CGFloat(spring)
 		self.physicsWorld.add(spr)
 	}
 	
-	
+	// Controls touch down for Sparks and surprise
 	func touchDown(atPoint pos : CGPoint) {
 		let touchedNode = self.atPoint(pos)
 		if let name = touchedNode.name
@@ -147,6 +155,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 	
+	// Handles moving touches
+	// Does nothing
 	func touchMoved(toPoint pos : CGPoint) {
 		let touchedNode = self.atPoint(pos)
 		if let name = touchedNode.name
@@ -158,6 +168,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 	
+	// Closes window when closed button is pressed.
 	func touchUp(atPoint pos : CGPoint) {
 		let touchedNode = self.atPoint(pos)
 		
@@ -183,8 +194,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		
 		for t in touches { self.touchDown(atPoint: t.location(in: self)) }
 	}
 	
@@ -200,7 +209,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		for t in touches { self.touchUp(atPoint: t.location(in: self)) }
 	}
 	
-	
+	// Updates the frame
 	override func update(_ currentTime: TimeInterval) {
 		// Called before each frame is rendered
 		
@@ -217,6 +226,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			entity.update(deltaTime: dt)
 		}
 		
+		// Updates upper spring physic and appends new data to the position array.
+		// Also checks for completion of simulation
+		
 		self.enumerateChildNodes(withName: "springDyn")
 		{
 			node, stop in
@@ -228,6 +240,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 					self.pos.append(Double(sprite.position.y) - self.initialSet)
 				}
 				
+				// Need confirmation collision occured, velocity is zero, and 1 cycle of timer completed.
 				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0) && self.collisionCleared == true
 				{
 					self.complete()
@@ -236,18 +249,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 		
+		// Updates circle
 		self.enumerateChildNodes(withName: "circle")
 		{
 			node, stop in
 			if (node is SKShapeNode)
 			{
+				// Appends new elements to circle position array
 				let sprite = node as! SKShapeNode
 				if self.collisionOccured == true
 				{
 					self.posC.append(Double(sprite.position.y) - self.initialSet)
 				}
 				
+				// Updates camera position
 				self.cam.position = sprite.position
+				
+				// Need confirmation collision occured, velocity is zero, and 1 cycle of timer completed.
 				if self.collisionOccured == true && sprite.physicsBody?.velocity == CGVector(dx: 0, dy: 0) && self.collisionCleared == true
 				{
 					self.complete()
@@ -256,6 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 		
+		// Makes close label follow path
 		self.enumerateChildNodes(withName: "label")
 		{
 			node, stop in
@@ -270,6 +289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		self.lastUpdateTime = currentTime
 	}
 	
+	// Calls upon completion of experiment.
 	@objc func complete()
 	{
 		if collisionOccured == true
@@ -295,7 +315,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 	}
-	
+
+	// Called upon collision between circle and upper dynamic spring
+	// Is not called with lower dynamic spring and thus does not need to verify.
 	func didBegin(_ contact: SKPhysicsContact) {
 		collisionOccured = true
 		print("Collision")
@@ -312,7 +334,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		burstNode.zPosition = -250
 		self.addChild(burstNode)
 	}
-	
+
+	// Clears from timer if collision is good.
 	@objc func good()
 	{
 		collisionCleared = true
